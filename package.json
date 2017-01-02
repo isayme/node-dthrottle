@@ -1,5 +1,5 @@
 {
-  "name": "ddebounce",
+  "name": "dfrl",
   "version": "0.0.1",
   "description": "",
   "engine": {
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isayme/ddebounce.git"
+    "url": "git+https://github.com/isayme/node-dfrl.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/isayme/ddebounce/issues"
+    "url": "https://github.com/isayme/node-dfrl/issues"
   },
-  "homepage": "https://github.com/isayme/ddebounce#readme",
+  "homepage": "https://github.com/isayme/node-dfrl#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "co-mocha": "^1.1.3",
