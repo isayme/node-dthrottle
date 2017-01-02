@@ -14,7 +14,7 @@ describe(`redis`, function () {
       let id = 'uniqueId'
       let timestamp = Date.now()
       let adapter = new Redis({
-        throttle: 200,
+        throttle: 2,
         redis: client,
         prefix: prefix
       })
@@ -37,7 +37,7 @@ describe(`redis`, function () {
       let id = 'uniqueId'
       let timestamp = Date.now()
       let adapter = new Redis({
-        throttle: 200,
+        throttle: 2,
         redis: client,
         prefix: prefix
       })
@@ -55,7 +55,7 @@ describe(`redis`, function () {
     it('should return 0 when clear fail', function * () {
       let id = 'uniqueId'
       let adapter = new Redis({
-        throttle: 200,
+        throttle: 2,
         redis: client,
         prefix: prefix
       })

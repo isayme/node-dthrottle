@@ -2,14 +2,14 @@
 
 const sinon = require('sinon')
 const expect = require('chai').expect
-const dfrl = require('../lib/').dfrl
+const dfrl = require('../lib/')
 const Memory = require('../lib/').Adapters.memory
 const utils = require('./utils')
 
 describe('dfrl', function () {
   let wait = 100
   let adapter = new Memory({
-    throttle: 200
+    throttle: 2
   })
 
   describe('constructor', function () {

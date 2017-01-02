@@ -1,1 +1,2 @@
-### Distribute Function Call Rate Limit
+### dfrl
+`D`istribute `F`unction `R`ate `L`imit.
