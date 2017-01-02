@@ -6,3 +6,6 @@ node_js:
 
 services:
   - redis
+
+after_success:
+  npm run coverage
