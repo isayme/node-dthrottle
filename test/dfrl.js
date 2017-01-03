@@ -29,6 +29,23 @@ describe('dfrl', function () {
     })
   })
 
+  describe('context for wrapped function', function () {
+    it('should keep context', function * () {
+      let spy = sinon.spy()
+      let obj = {}
+
+      let worker = dfrl(spy, {
+        wait: wait,
+        adapter: adapter
+      })
+
+      worker.call(obj)
+
+      yield utils.delay(200)
+      expect(spy.calledOn(obj)).be.true
+    })
+  })
+
   describe('without getId', function () {
     it('should called once', function * () {
       let spy = sinon.spy()
