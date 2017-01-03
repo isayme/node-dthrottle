@@ -86,4 +86,56 @@ describe('dfrl', function () {
       expect(spy.args[1]).eql(['username1', 1])
     })
   })
+
+  describe('error handle', function () {
+    it('should catch when setnx rejected', function * () {
+      let spy = sinon.spy()
+
+      let worker = dfrl(function () {}, {
+        wait: wait,
+        adapter: adapter,
+        error: spy
+      })
+
+      let stub = sinon.stub(adapter, 'setnx', function () {
+        return new Promise((resolve, reject) => {
+          reject(new Error('reject senex'))
+        })
+      })
+
+      worker()
+
+      yield utils.delay(200)
+
+      expect(spy.callCount).equal(1)
+      expect(spy.args[0][0].message).eql('reject senex')
+
+      stub.restore()
+    })
+
+    it('should catch when clear rejected', function * () {
+      let spy = sinon.spy()
+
+      let worker = dfrl(function () {}, {
+        wait: wait,
+        adapter: adapter,
+        error: spy
+      })
+
+      let stub = sinon.stub(adapter, 'clear', function () {
+        return new Promise((resolve, reject) => {
+          reject(new Error('reject clear'))
+        })
+      })
+
+      worker()
+
+      yield utils.delay(200)
+
+      expect(spy.callCount).equal(1)
+      expect(spy.args[0][0].message).eql('reject clear')
+
+      stub.restore()
+    })
+  })
 })
