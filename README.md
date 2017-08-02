@@ -1,29 +1,26 @@
-## DFRL
+## dthrottle
 
-[![Build Status](https://travis-ci.org/isayme/node-dfrl.svg?branch=master)](https://travis-ci.org/isayme/node-dfrl)
-[![Coverage Status](https://coveralls.io/repos/github/isayme/node-dfrl/badge.svg?branch=master)](https://coveralls.io/github/isayme/node-dfrl?branch=master)
-
-`D`istribute `F`unction `R`ate `L`limit.
+[![Build Status](https://travis-ci.org/isayme/node-dthrottle.svg?branch=master)](https://travis-ci.org/isayme/node-dthrottle)
+[![Coverage Status](https://coveralls.io/repos/github/isayme/node-dthrottle/badge.svg?branch=master)](https://coveralls.io/github/isayme/node-dthrottle?branch=master)
 
 ## How it works
-** Rate limit the invocation of a function by `ignore` following invocations. **
-
+**Rate limit the invocation of a function by `ignore` following invocations.**
 
 ## Example
-````
+```
 const redis = require('redis')
-const dfrl = require('dfrl')
+const dthrottle = require('dthrottle')
 
 function tested () {
   console.log(new Date().toISOString(), 'executing ...')
 }
 
-let test = dfrl(tested, {
+let test = dthrottle(tested, {
   wait: 1000,
-  adapter: new dfrl.Adapters.Redis({
+  adapter: new dthrottle.Adapters.Redis({
     throttle: 2,
     redis: redis.createClient(),
-    prefix: 'dfrl:example'
+    prefix: 'dthrottle:example'
   })
 })
 
@@ -31,10 +28,10 @@ let test = dfrl(tested, {
 setInterval(() => {
   test()
 }, 100)
-````
+```
 
 ## Doc
-### dfrl(func, opts)
+### dthrottle(func, opts)
 * `func`, the function to be ratelimited
 * `opts.wait`, invoke the `func` after `opts.wait` ms
 * `opts.adapter`, adapter to be used
@@ -44,13 +41,13 @@ setInterval(() => {
 
 ### Adapters
 
-#### new dfrl.Adapters.Memory(opts)
-* `opts.throttle`, expire seconds for any locked `identify id`
+#### new dthrottle.Adapters.Memory(opts)
+* `opts.expire`, expire seconds for any locked `identify id`
 
-#### new dfrl.Adapters.Redis(opts)
-* `opts.throttle`, expire seconds for any locked `identify id`
+#### new dthrottle.Adapters.Redis(opts)
+* `opts.expire`, expire seconds for any locked `identify id`
 * `opts.redis`, [node_redis](https://github.com/NodeRedis/node_redis) client
-* `opts.prefix`, add prefix for keys to be used in dfrl
+* `opts.prefix`, add prefix for keys to be used in dthrottle
 
 ### Add another Adapter
 An adapter should have at least two methods: `setnx` and `clear`, both return a Promise.
