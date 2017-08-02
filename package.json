@@ -1,7 +1,7 @@
 {
-  "name": "dfrl",
-  "version": "0.0.2",
-  "description": "",
+  "name": "dthrottle",
+  "version": "0.1.0",
+  "description": "distribution throttle",
   "engine": {
     "node": ">=4"
   },
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isayme/node-dfrl.git"
+    "url": "git+https://github.com/isayme/node-dthrottle.git"
   },
-  "author": "",
+  "author": "iSayme <isaymeorg@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/isayme/node-dfrl/issues"
+    "url": "https://github.com/isayme/node-dthrottle/issues"
   },
-  "homepage": "https://github.com/isayme/node-dfrl#readme",
+  "homepage": "https://github.com/isayme/node-dthrottle#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "co-mocha": "^1.1.3",
