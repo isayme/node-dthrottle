@@ -9,7 +9,7 @@ const utils = require('./utils')
 describe('dfrl', function () {
   let wait = 100
   let adapter = new Memory({
-    throttle: 2
+    expire: 2
   })
 
   describe('constructor', function () {

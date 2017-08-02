@@ -14,13 +14,13 @@ describe(`redis`, function () {
       expect(fn).throw(Error, 'opts.redis required')
     })
 
-    it('should throw opts.throttle required', function () {
+    it('should throw opts.expire required', function () {
       let fn = () => new Redis({redis: client})
-      expect(fn).throw(Error, 'opts.throttle required')
+      expect(fn).throw(Error, 'opts.expire required')
     })
 
     it('should throw opts.prefix required', function () {
-      let fn = () => new Redis({redis: client, throttle: 2})
+      let fn = () => new Redis({redis: client, expire: 2})
       expect(fn).throw(Error, 'opts.prefix required')
     })
   })
@@ -28,7 +28,7 @@ describe(`redis`, function () {
   describe('error', function () {
     let adapter = new Redis({
       redis: client,
-      throttle: 1,
+      expire: 1,
       prefix: 'dfrl:test'
     })
 

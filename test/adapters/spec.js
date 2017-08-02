@@ -8,10 +8,10 @@ const Redis = require('../../lib/').Adapters.redis
 
 const adapters = {
   memory: new Memory({
-    throttle: 1
+    expire: 1
   }),
   redis: new Redis({
-    throttle: 1,
+    expire: 1,
     redis: redis.createClient(),
     prefix: 'dfrl:spec'
   })
@@ -41,7 +41,7 @@ for (let adapterName in adapters) {
         expect(sum).equal(1)
       })
 
-      it('should able setnx after throttle', function * () {
+      it('should able setnx after expire', function * () {
         let timestamp = Date.now()
 
         let res

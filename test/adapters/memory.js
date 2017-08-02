@@ -5,9 +5,9 @@ const Memory = require('../../lib/').Adapters.memory
 
 describe(`memory`, function () {
   describe('constructor', function () {
-    it('should throw if opts.throttle not defined', function () {
+    it('should throw if opts.expire not defined', function () {
       let fn = () => new Memory()
-      expect(fn).throw(Error, 'opts.throttle required')
+      expect(fn).throw(Error, 'opts.expire required')
     })
   })
 })
