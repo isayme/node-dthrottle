@@ -34,9 +34,7 @@ describe(`redis`, function () {
 
     it('should setnx should rejected when redis.eval have error', function * () {
       let stub = sinon.stub(adapter.redis, 'eval', function () {
-        let callback = arguments[arguments.length - 1]
-
-        callback(new Error('eval failed'))
+        return Promise.reject(new Error('eval failed'))
       })
 
       let spy = sinon.spy()
@@ -51,9 +49,7 @@ describe(`redis`, function () {
 
     it('should clear should rejected when redis.del have error', function * () {
       let stub = sinon.stub(adapter.redis, 'del', function () {
-        let callback = arguments[arguments.length - 1]
-
-        callback(new Error('del failed'))
+        return Promise.reject(new Error('del failed'))
       })
 
       let spy = sinon.spy()

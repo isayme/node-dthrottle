@@ -6,13 +6,17 @@ const utils = require('../utils')
 const Memory = require('../../lib/').Adapters.memory
 const Redis = require('../../lib/').Adapters.redis
 
+const redisClient = redis.createClient()
 const adapters = {
   memory: new Memory({
     expire: 1
   }),
   redis: new Redis({
     expire: 1,
-    redis: redis.createClient(),
+    redis: {
+      eval: utils.promisify(redisClient.eval.bind(redisClient)),
+      del: utils.promisify(redisClient.del.bind(redisClient))
+    },
     prefix: 'dfrl:spec'
   })
 }

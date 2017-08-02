@@ -46,7 +46,7 @@ setInterval(() => {
 
 #### new dthrottle.Adapters.Redis(opts)
 * `opts.expire`, expire seconds for any locked `identify id`
-* `opts.redis`, [node_redis](https://github.com/NodeRedis/node_redis) client
+* `opts.redis`, a redis client with Promise APIs
 * `opts.prefix`, add prefix for keys to be used in dthrottle
 
 ### Add another Adapter
