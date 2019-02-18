@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+### 0.2.1 / 2019-02-18
+* 阿里云 redis lua 限制: 所有key都应该由KEYS数组来传递
+
 ### 0.2.0 / 2017-08-02
 * Redis Adapter accept redis with Promise APIs
 
